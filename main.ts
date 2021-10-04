@@ -44,8 +44,7 @@ input.onButtonPressed(Button.A, function () {
     if (!(spiel_beendet)) {
         if (durchgang_begonnen) {
             durchgang_beendet = true
-            basic.showIcon(IconNames.Yes)
-            basic.pause(500)
+            durchgang_begonnen = false
             basic.showLeds(`
                 . . # . .
                 . # # # #
@@ -53,13 +52,13 @@ input.onButtonPressed(Button.A, function () {
                 . # # # #
                 . . # . .
                 `)
+            basic.pause(500)
+            basic.showIcon(IconNames.Yes)
             punkte_A += 1
-            durchgang_begonnen = false
         } else {
             if (!(durchgang_beendet)) {
+                durchgang_begonnen = false
                 durchgang_beendet = true
-                basic.showIcon(IconNames.No)
-                basic.pause(500)
                 basic.showLeds(`
                     . . # . .
                     . # # # #
@@ -67,6 +66,11 @@ input.onButtonPressed(Button.A, function () {
                     . # # # #
                     . . # . .
                     `)
+                basic.pause(500)
+                basic.showIcon(IconNames.No)
+                if (punkte_A > 0) {
+                    punkte_A += -1
+                }
             }
         }
     }
@@ -97,8 +101,7 @@ input.onButtonPressed(Button.B, function () {
     if (!(spiel_beendet)) {
         if (durchgang_begonnen) {
             durchgang_beendet = true
-            basic.showIcon(IconNames.Yes)
-            basic.pause(500)
+            durchgang_begonnen = false
             basic.showLeds(`
                 . . # . .
                 # # # # .
@@ -106,13 +109,13 @@ input.onButtonPressed(Button.B, function () {
                 # # # # .
                 . . # . .
                 `)
+            basic.pause(500)
+            basic.showIcon(IconNames.Yes)
             punkte_B += 1
-            durchgang_begonnen = false
         } else {
             if (!(durchgang_beendet)) {
+                durchgang_begonnen = false
                 durchgang_beendet = true
-                basic.showIcon(IconNames.No)
-                basic.pause(500)
                 basic.showLeds(`
                     . . # . .
                     # # # # .
@@ -120,6 +123,11 @@ input.onButtonPressed(Button.B, function () {
                     # # # # .
                     . . # . .
                     `)
+                basic.pause(500)
+                basic.showIcon(IconNames.No)
+                if (punkte_B > 0) {
+                    punkte_B += -1
+                }
             }
         }
     }
