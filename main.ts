@@ -55,6 +55,7 @@ input.onButtonPressed(Button.A, function () {
             basic.pause(500)
             basic.showIcon(IconNames.Yes)
             punkte_A += 1
+            zeige_Spielstand()
         } else {
             if (!(durchgang_beendet)) {
                 durchgang_begonnen = false
@@ -71,9 +72,12 @@ input.onButtonPressed(Button.A, function () {
                 if (punkte_A > 0) {
                     punkte_A += -1
                 }
+                zeige_Spielstand()
             }
         }
     }
+})
+function zeige_Spielstand () {
     basic.pause(500)
     basic.clearScreen()
     for (let index = 0; index <= punkte_A - 1; index++) {
@@ -82,21 +86,7 @@ input.onButtonPressed(Button.A, function () {
     for (let index = 0; index <= punkte_B - 1; index++) {
         led.plot(4, index)
     }
-})
-input.onButtonPressed(Button.AB, function () {
-    if (spiel_beendet) {
-        spiel_beendet = false
-        punkte_A = 0
-        punkte_B = 0
-        basic.showLeds(`
-            . . . . .
-            . . . . .
-            . . . . .
-            . . . . .
-            . . . . .
-            `)
-    }
-})
+}
 input.onButtonPressed(Button.B, function () {
     if (!(spiel_beendet)) {
         if (durchgang_begonnen) {
@@ -112,6 +102,7 @@ input.onButtonPressed(Button.B, function () {
             basic.pause(500)
             basic.showIcon(IconNames.Yes)
             punkte_B += 1
+            zeige_Spielstand()
         } else {
             if (!(durchgang_beendet)) {
                 durchgang_begonnen = false
@@ -128,15 +119,8 @@ input.onButtonPressed(Button.B, function () {
                 if (punkte_B > 0) {
                     punkte_B += -1
                 }
+                zeige_Spielstand()
             }
         }
-    }
-    basic.pause(500)
-    basic.clearScreen()
-    for (let index = 0; index <= punkte_A - 1; index++) {
-        led.plot(0, index)
-    }
-    for (let index = 0; index <= punkte_B - 1; index++) {
-        led.plot(4, index)
     }
 })
